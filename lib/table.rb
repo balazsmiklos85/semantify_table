@@ -1,16 +1,17 @@
 # frozen_string_literal: true
+require_relative 'table_row'
 
 class Table
   def initialize
-    @header = []
+    @header = TableRow.new
     @data = []
   end
 
   def add(line)
-    parsed = parse_line line
+    parsed = TableRow.new line
     if !header?
       @header = parsed
-    elsif !parsed.empty?
+    elsif parsed.values?
       @data << parsed
     end
   end
@@ -20,7 +21,7 @@ class Table
   end
 
   def header?
-    !@header.empty?
+    @header.values?
   end
 
   def line_count
@@ -30,7 +31,7 @@ class Table
   def output
     result = []
     @data.each do |data|
-      if data.length == 1
+      if data.single_cell?
         result << "## #{data[0]}"
         result << ''
         next
@@ -48,17 +49,5 @@ class Table
       end
     end
     result
-  end
-
-  def parse_line(line)
-    result = line.split(/\|/)
-                 .map(&:strip)
-                 .map { |column| column.gsub(/[|*]/, '') }
-                 .reject(&:empty?)
-    if result.any? { |column| /[^-]/.match? column }
-      result
-    else
-      []
-    end
   end
 end

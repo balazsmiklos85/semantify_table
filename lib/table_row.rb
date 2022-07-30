@@ -12,12 +12,17 @@ class TableRow
                  .map { |cell| TableCell.new cell }
   end
 
-  def each_with_index(&block)
-    @cells.each_with_index(&block)
-  end
-
   def single_cell?
     @cells.length == 1
+  end
+
+  def to_markdown(header)
+    result = []
+    @cells.each_with_index do |column, index|
+      mapper = CellMapper.new header[index], column, index
+      result << mapper
+    end
+    result.map { |cell_mapper| cell_mapper.to_markdown }
   end
 
   def values?

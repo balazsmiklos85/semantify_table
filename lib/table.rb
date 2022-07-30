@@ -37,9 +37,7 @@ class Table
         result << row[0].to_heading(2)
         next
       end
-      row.each_with_index do |column, index|
-        result << CellMapper.new(@header[index], column, index).to_markdown
-      end
+      result += row.to_markdown @header
     end
     result
   end

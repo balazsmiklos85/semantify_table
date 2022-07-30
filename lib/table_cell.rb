@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TableCell
   def initialize(value)
     @value = value

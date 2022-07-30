@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CellMapper
   def initialize(header, cell, column_index)
     @header = header

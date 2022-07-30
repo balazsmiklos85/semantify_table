@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'table_cell'
+
 class TableRow
   def initialize(line = '')
     @cells = line.split(/\|/)
@@ -7,6 +9,7 @@ class TableRow
                  .map { |cell| replace_formatting cell }
                  .reject(&:empty?)
                  .reject { |cell| header_separator? cell }
+                 .map { |cell| TableCell.new cell }
   end
 
   def each_with_index(&block)

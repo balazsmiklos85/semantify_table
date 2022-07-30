@@ -9,19 +9,28 @@ Gem::Specification.new do |spec|
   spec.email = ['balazsmiklos85@gmail.com']
 
   spec.summary = 'Markdown tables to structured text'
-  spec.description = 'A script that converts Markdown tables to something more semantically appropriate'
+  spec.description = 'A script that converts Markdown tables to something ' \
+                     'more semantically appropriate'
   spec.homepage = 'https://github.com/balazsmiklos85/semantify_table'
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 3.1.0'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/balazsmiklos85/semantify_table'
   spec.metadata['changelog_uri'] = 'https://github.com/balazsmiklos85/semantify_table/blob/main/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
+  # The `git ls-files -z` loads the files in the RubyGem that have been added
+  # into git.
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject do |f|
-      (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
+      (f == __FILE__) ||
+        f.match(%r{
+          \A
+          (?:(?:bin|test|spec|features)
+          /|
+          \.
+          (?:git|travis|circleci)|appveyor)
+        })
     end
   end
   spec.bindir = 'exe'

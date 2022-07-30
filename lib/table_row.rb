@@ -22,7 +22,7 @@ class TableRow
       mapper = CellMapper.new header[index], column, index
       result << mapper
     end
-    result.map { |cell_mapper| cell_mapper.to_markdown }
+    result.map(&:to_markdown)
   end
 
   def values?

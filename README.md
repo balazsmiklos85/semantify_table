@@ -28,6 +28,8 @@ This thing does something else.
 
 ## Usage
 
-`ruby lib/semantify_table.rb source_file.md [target_file.md]`
+* Clone the project
+* `cd semantify_table`
+* `ruby lib/semantify_table.rb source_file.md [target_file.md]`
 
 If the target file is not specified, then the source file will be overwritten.

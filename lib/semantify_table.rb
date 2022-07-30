@@ -1,30 +1,17 @@
 #!/usr/bin/ruby
 # frozen_string_literal: true
 
+require_relative 'argument_validator'
+require_relative 'markdown_reader'
+require_relative 'markdown_writer'
 require_relative 'semantify_table/version'
 require_relative 'table'
 
 module SemantifyTable
-  if ARGV.empty?
-    puts 'Missing target file. Proper usage: semantify_table markdown_file.md'
-    exit 1
-  end
+  ArgumentValidator.new(ARGV).validate
+  input_file_name, output_file_name = ARGV
+  output_file_name = input_file_name if output_file_name.nil?
 
-  output_lines = []
-  table = Table.new
-  File.readlines(ARGV[0]).each do |line|
-    if /^\s*\|.*\|\s*$/.match?(line)
-      table.add line
-    else
-      if table.data?
-        output_lines += table.output
-        table = Table.new
-      end
-      output_lines << line
-    end
-  end
-
-  File.open(ARGV[1].nil? ? ARGV[0] : ARGV[1], 'w+') do |f|
-    output_lines.each { |line| f.puts(line) }
-  end
+  converted_lines = MarkdownReader.new(input_file_name).read
+  MarkdownWriter.new(output_file_name).write converted_lines
 end

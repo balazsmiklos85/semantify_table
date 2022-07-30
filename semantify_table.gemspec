@@ -5,19 +5,17 @@ require_relative "lib/semantify_table/version"
 Gem::Specification.new do |spec|
   spec.name = "semantify_table"
   spec.version = SemantifyTable::VERSION
-  spec.authors = ["TODO: Write your name"]
-  spec.email = ["TODO: Write your email address"]
+  spec.authors = ["Miklós Balázs"]
+  spec.email = ["balazsmiklos85@gmail.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "Markdown tables to structured text"
+  spec.description = "A script that converts Markdown tables to something more semantically appropriate"
+  spec.homepage = "https://github.com/balazsmiklos85/semantify_table"
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
-
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = "https://github.com/balazsmiklos85/semantify_table"
+  spec.metadata["changelog_uri"] = "https://github.com/balazsmiklos85/semantify_table/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

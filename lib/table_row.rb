@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TableRow
   def initialize(line = '')
     @cells = line.split(/\|/)
@@ -7,8 +9,8 @@ class TableRow
                  .reject { |cell| header_separator? cell }
   end
 
-  def each_with_index
-    @cells.each_with_index { |cell, index| yield cell, index }
+  def each_with_index(&block)
+    @cells.each_with_index(&block)
   end
 
   def single_cell?
@@ -25,8 +27,8 @@ class TableRow
 
   private
 
-  MARKDOWN_FORMATTING_CHARACTERS = /[|*_]/
-  ONLY_DASHES_REGEXP = /^-+$/
+  MARKDOWN_FORMATTING_CHARACTERS = /[|*_]/.freeze
+  ONLY_DASHES_REGEXP = /^-+$/.freeze
 
   def header_separator?(cell)
     ONLY_DASHES_REGEXP.match? cell

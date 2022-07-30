@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Table
   def initialize
     @header = []
@@ -50,9 +52,9 @@ class Table
 
   def parse_line(line)
     result = line.split(/\|/)
-                 .map { |column| column.strip }
+                 .map(&:strip)
                  .map { |column| column.gsub(/[|*]/, '') }
-                 .reject { |column| column.empty? }
+                 .reject(&:empty?)
     if result.any? { |column| /[^-]/.match? column }
       result
     else

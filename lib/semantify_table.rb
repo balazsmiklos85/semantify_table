@@ -24,7 +24,7 @@ module SemantifyTable
     end
   end
 
-  File.open(ARGV[1].nil? ? ARGV[0] : ARGV[1], "w+") do |f|
+  File.open(ARGV[1].nil? ? ARGV[0] : ARGV[1], 'w+') do |f|
     output_lines.each { |line| f.puts(line) }
   end
 end

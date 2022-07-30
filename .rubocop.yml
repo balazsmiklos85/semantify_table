@@ -3,3 +3,6 @@ AllCops:
 
 Layout/LineLength:
   Max: 80
+
+Style/Documentation:
+  Enabled: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MarkdownWriter
   def initialize(file_name)
     @file_name = file_name

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MarkdownReader
   def initialize(file_name)
     @file_name = file_name
@@ -10,7 +12,8 @@ class MarkdownReader
       if table_part? line
         parsed_table.add line
       else
-        output_lines, parsed_table = handle_non_table_line(line, output_lines, parsed_table)
+        output_lines, parsed_table = handle_non_table_line(line, output_lines,
+                                                           parsed_table)
       end
     end
     output_lines
@@ -30,7 +33,7 @@ class MarkdownReader
     [output_lines, parsed_table]
   end
 
-  TABLE_FORMATTING = /^\s*\|.*\|\s*$/
+  TABLE_FORMATTING = /^\s*\|.*\|\s*$/.freeze
 
   def end_table_if_any(output_lines, parsed_table)
     if parsed_table.data?

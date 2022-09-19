@@ -16,6 +16,9 @@ class MarkdownReader
                                                            parsed_table)
       end
     end
+    if parsed_table.data?
+      output_lines, = handle_non_table_line('', output_lines, parsed_table)
+    end
     output_lines
   end
 

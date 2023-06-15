@@ -35,7 +35,7 @@ class TableRow
 
   private
 
-  MARKDOWN_FORMATTING_CHARACTERS = /[|*_]/.freeze
+  MARKDOWN_FORMATTING_CHARACTERS = /(?<=\s)[|*_](?=\s)/.freeze
   ONLY_DASHES_REGEXP = /^-+$/.freeze
 
   def header_separator?(cell)

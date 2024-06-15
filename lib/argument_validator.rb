@@ -6,10 +6,10 @@ class ArgumentValidator
   end
 
   def validate
-    if @arguments.empty?
-      puts 'Missing source file.'
-      puts 'Proper usage: ruby semantify_table source_file.md [target_file]'
-      exit 1
-    end
+    return unless @arguments.empty?
+
+    puts 'Missing source file.'
+    puts 'Proper usage: ruby semantify_table source_file.md [target_file]'
+    exit 1
   end
 end

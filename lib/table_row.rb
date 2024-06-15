@@ -4,7 +4,7 @@ require_relative 'table_cell'
 
 class TableRow
   def initialize(line = '')
-    @cells = line.split(/\|/)
+    @cells = line.split('|')
                  .map(&:strip)
                  .map { |cell| replace_formatting cell }
                  .reject(&:empty?)

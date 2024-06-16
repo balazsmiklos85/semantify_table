@@ -7,7 +7,6 @@ class TableRow
     @cells = line.split('|')
                  .map(&:strip)
                  .map { |cell| replace_formatting cell }
-                 .reject(&:empty?)
                  .reject { |cell| header_separator? cell }
                  .map { |cell| TableCell.new cell }
   end

@@ -6,16 +6,7 @@ class MarkdownReader
   end
 
   def read
-    output_lines = []
-    parsed_table = Table.new
-    lines.each do |line|
-      if table_part? line
-        parsed_table.add line
-      else
-        output_lines, parsed_table = handle_non_table_line(line, output_lines,
-                                                           parsed_table)
-      end
-    end
+    output_lines, parsed_table = handle_lines [], Table.new
     if parsed_table.data?
       output_lines, = handle_non_table_line('', output_lines, parsed_table)
     end
@@ -29,6 +20,18 @@ class MarkdownReader
   end
 
   private
+
+  def handle_lines(output_lines, parsed_table)
+    lines.each do |line|
+      if table_part? line
+        parsed_table.add line
+      else
+        output_lines, parsed_table = handle_non_table_line(line, output_lines,
+                                                           parsed_table)
+      end
+    end
+    [output_lines, parsed_table]
+  end
 
   def handle_non_table_line(line, output_lines, parsed_table)
     output_lines, parsed_table = end_table_if_any(output_lines, parsed_table)

@@ -9,6 +9,7 @@ class TableRow
                  .map { |cell| replace_formatting cell }
                  .reject { |cell| header_separator? cell }
                  .map { |cell| TableCell.new cell }
+    @cells = @cells[1..-2]
   end
 
   def single_cell?
@@ -25,7 +26,7 @@ class TableRow
   end
 
   def values?
-    !@cells.empty?
+    !@cells.nil? && !@cells.empty?
   end
 
   def [](index)

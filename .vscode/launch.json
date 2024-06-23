@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Local File",
             "type": "ruby_lsp",
             "request": "launch",
-            "program": "${workspaceRoot}/lib/semantify_table.rb ${workspaceRoot}/test_data.md /tmp/output.md"
+            "name": "Debug program",
+            "program": "ruby lib/semantify_table.rb test_data.md"
         }
     ]
 }
